@@ -5,7 +5,6 @@
 
 package cse360assign2;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class SimpleList represents a data structure that can hold 10 elements in the form of a array
  * It includes methods to add and remove elements from the list. As well as search for elements within
