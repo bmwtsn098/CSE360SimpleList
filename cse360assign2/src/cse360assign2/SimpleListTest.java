@@ -1,6 +1,6 @@
 //Brandon Watson
 //Class ID: 329
-//Assignment 1
+//Assignment 2
 //This file contains all the JUnit test cases for the SimpleList class
 
 package cse360assign2;
@@ -277,4 +277,128 @@ class SimpleListTest {
 			
 			assertEquals(-1, testList.search(8));
 		}
+		
+		//Test append
+		@Test
+		public void testAppend() {
+			SimpleList testList = new SimpleList();
+			
+			testList.add(1);
+			testList.add(1);
+			testList.add(4);
+			testList.add(4);
+			testList.add(5);
+			testList.append(6);
+			testList.append(7);
+			testList.add(1);
+			testList.add(1);
+			testList.add(4);
+			testList.append(6);
+			
+			assertEquals("4 1 1 5 4 4 1 1 6 7 6", testList.toString());
+		}
+		
+		//Test append on empty list
+		@Test
+		public void testAppendEmpty() {
+			SimpleList testList = new SimpleList();
+			
+			testList.append(6);
+			
+			assertEquals("6", testList.toString());
+		}
+		
+		//Test first
+		@Test
+		public void testFirst() {
+			SimpleList testList = new SimpleList();
+			
+			testList.add(1);
+			testList.add(1);
+			testList.add(4);
+			testList.add(4);
+			testList.add(5);
+			testList.append(6);
+			testList.append(7);
+			testList.add(1);
+			testList.add(1);
+			testList.add(4);
+			testList.append(6);
+			
+			assertEquals(4, testList.first());
+		}
+		
+		//Test last
+		@Test
+		public void testLast() {
+			SimpleList testList = new SimpleList();
+			
+			testList.add(1);
+			testList.add(1);
+			testList.add(4);
+			testList.add(4);
+			testList.add(5);
+			testList.append(6);
+			testList.append(7);
+			testList.add(1);
+			testList.add(1);
+			testList.add(4);
+			testList.append(6);
+			
+			assertEquals(6, testList.last());
+		}
+		
+		//Test size when adding
+		@Test
+		public void testSize() {
+			SimpleList testList = new SimpleList();
+			
+			testList.add(1);
+			testList.add(1);
+			testList.add(4);
+			testList.add(4);
+			testList.add(5);
+			testList.append(6);
+			testList.append(7);
+			testList.add(1);
+			testList.add(1);
+			testList.add(4);
+			testList.append(6);
+			
+			assertEquals(15, testList.size());
+		}
+		
+		//Test size when removing
+		@Test
+		public void testSizeRemove() {
+			SimpleList testList = new SimpleList();
+			
+			testList.add(1);
+			testList.add(1);
+			testList.add(4);
+			testList.add(4);
+			testList.add(5);
+			testList.append(6);
+			testList.append(7);
+			testList.add(1);
+			testList.add(1);
+			testList.add(4);
+			testList.append(6);
+			testList.remove(1);
+			testList.remove(4);
+			
+			assertEquals(9, testList.size());
+		}
+		
+		//Test empty list first and last
+		@Test
+		public void testEmpty() {
+			SimpleList testList = new SimpleList();
+			
+			assertEquals(-1, testList.first());
+			assertEquals(-1, testList.last());
+			assertEquals(10, testList.size());
+			assertEquals(0, testList.count());
+		}
+		
 }
