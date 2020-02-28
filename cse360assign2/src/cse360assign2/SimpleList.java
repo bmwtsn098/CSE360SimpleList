@@ -34,11 +34,30 @@ public class SimpleList {
 	 */
 	public void add(int numberToAdd) {
 		
+		//if list is full
+		if(count == list.length) {
+			
+			//increase size
+			int[] temp = new int[(int) (list.length * 1.5)];
+			
+			//add number to the beginning
+			temp[0] = numberToAdd;
+			//add rest of the list after new number
+			for(int counter = 0; counter < list.length; counter++) {
+				
+				temp[counter + 1] = list[counter];
+			}
+			
+			//replace old list with new one
+			list = temp;
+			
+			count++;
+		}
 		//if there are numbers in the list
-		if(count != 0) {
+		else if(count != 0) {
 			
 			//move the numbers down to make room for the new one
-			for(int counter = 8; counter >= 0; counter--) {
+			for(int counter = list.length - 2; counter >= 0; counter--) {
 				
 				list[counter + 1] = list[counter];
 			}
@@ -67,12 +86,12 @@ public class SimpleList {
 	public void remove(int numberToRemove) {
 		
 		//look for number throughout all of the list
-		for(int counter = 0; counter < 10; counter++) {
+		for(int counter = 0; counter < list.length; counter++) {
 			
 			if(list[counter] == numberToRemove) {
 				
 				//if found move all elements after it to the left
-				for(int innerCount = counter; innerCount < 9; innerCount++) {
+				for(int innerCount = counter; innerCount < list.length - 1; innerCount++) {
 					
 					list[innerCount] = list[innerCount + 1];
 				}
@@ -85,6 +104,22 @@ public class SimpleList {
 				//step count back to check for duplicates
 				counter--;
 			}
+		}
+		
+		//check size minus length to get empty space and check if it is greater than 25%
+		if((list.length - count) > (int)(list.length*.25)) {
+			
+			//new array with new size
+			int[] temp = new int[list.length - (int)(list.length * .25)];
+			
+			//copy over elements to new array
+			for(int counter = 0; counter < temp.length; counter++) {
+				
+				temp[counter] = list[counter];
+			}
+			
+			//replace old list with new one
+			list = temp;
 		}
 	}
 	
